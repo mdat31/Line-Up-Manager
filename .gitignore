@@ -145,3 +145,7 @@ doc/api/
 *.js.deps
 *.js.map
 
+
+# Package build outputs and coverage
+**/build/
+coverage/

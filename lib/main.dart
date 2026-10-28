@@ -1,13 +1,15 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:lineup/lineup.dart';
 
 import 'package:marozi/app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await _initFirebase();
-  runApp(const MaroziApp());
+  final lineup = await LocalLineupDependencies.open();
+  runApp(MaroziApp(lineup: lineup));
 }
 
 // The app must stay usable offline and on platforms without Firebase config

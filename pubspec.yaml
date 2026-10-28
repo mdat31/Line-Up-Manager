@@ -6,6 +6,9 @@ version: 1.0.0+1
 environment:
   sdk: ^3.13.0
 
+workspace:
+  - packages/lineup
+
 dependencies:
   cached_network_image: ^4.0.5
   carousel_slider: ^5.1.2
@@ -20,6 +23,8 @@ dependencies:
   firebase_storage: ^14.0.1
   flutter:
     sdk: flutter
+  lineup:
+    path: packages/lineup
   flutter_bloc: ^9.1.1
   gal: ^2.3.3
   path_provider: ^2.1.6
@@ -56,12 +61,6 @@ flutter:
     - family: San Francisco Display Regular
       fonts:
         - asset: assets/fonts/San-Francisco-Display-Regular.ttf
-    - family: BebasNeue Bold
-      fonts:
-        - asset: assets/fonts/BebasNeue-Bold.ttf
-    - family: BebasNeue Regular
-      fonts:
-        - asset: assets/fonts/BebasNeue-Regular.ttf
     - family: CustomIcon
       fonts:
         - asset: assets/fonts/CustomIcon.ttf
