@@ -1,0 +1,11 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Public reference data: signed-in (anonymous) users may read, nobody writes from clients.
+    match /{collection}/{docId} {
+      allow read: if request.auth != null
+                  && collection in ['League', 'Club', 'Player'];
+      allow write: if false;
+    }
+  }
+}

@@ -5,14 +5,15 @@ class LogInService {
   static FirebaseAuth mAuth;
   static FirebaseFirestore firestoreInstance = FirebaseFirestore.instance;
 
+  // Anonymous sign-in: no credentials shipped in the app.
+  // Access is restricted by firestore.rules / storage.rules (read-only).
   getCurrentUser() async {
     mAuth = FirebaseAuth.instance;
-    await mAuth
-        .signInWithEmailAndPassword(
-            email: "marozi@gmail.com", password: "Marozi@123")
-        .whenComplete(() async {
-      User currentUser = mAuth.currentUser;
-      print('currentUser: ${currentUser.email}');
-    });
+    if (mAuth.currentUser != null) return;
+    try {
+      await mAuth.signInAnonymously();
+    } on FirebaseAuthException catch (e) {
+      print('Anonymous sign-in failed: ${e.code}');
+    }
   }
 }
